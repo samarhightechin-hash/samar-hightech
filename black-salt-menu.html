@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Black Salt | Digital Menu</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#09070d;
+    color:#fff;
+    line-height:1.5;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    width:420px;
+    height:420px;
+    background:#7c22ff;
+    filter:blur(150px);
+    opacity:.12;
+    top:-120px;
+    left:-120px;
+    pointer-events:none;
+}
+
+header{
+    padding:25px 20px;
+    text-align:center;
+    border-bottom:1px solid #29202f;
+    position:sticky;
+    top:0;
+    background:rgba(9,7,13,.92);
+    backdrop-filter:blur(15px);
+    z-index:10;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#a855f7;
+}
+
+.subtitle{
+    color:#aaa;
+    font-size:13px;
+    margin-top:5px;
+}
+
+.hero{
+    padding:55px 20px 35px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 16px;
+    border:1px solid #8b3dff;
+    border-radius:30px;
+    color:#c084fc;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:42px;
+    line-height:1.05;
+    margin-bottom:15px;
+}
+
+.hero h1 span{
+    color:#a855f7;
+}
+
+.hero p{
+    color:#aaa;
+    max-width:600px;
+    margin:auto;
+}
+
+.buttons{
+    margin-top:25px;
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.btn{
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:30px;
+    font-weight:bold;
+    display:inline-block;
+}
+
+.primary{
+    background:linear-gradient(135deg,#7c3aed,#c026ff);
+    color:white;
+}
+
+.secondary{
+    border:1px solid #8b3dff;
+    color:#d8b4fe;
+}
+
+.container{
+    width:92%;
+    max-width:1100px;
+    margin:auto;
+}
+
+.section-title{
+    margin:40px 0 20px;
+    font-size:27px;
+}
+
+.section-title span{
+    color:#a855f7;
+}
+
+.categories{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding-bottom:10px;
+}
+
+.categories button{
+    flex-shrink:0;
+    border:1px solid #38234c;
+    background:#120d18;
+    color:#ddd;
+    padding:10px 16px;
+    border-radius:25px;
+}
+
+.categories button:first-child{
+    background:#8b3dff;
+    color:white;
+}
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:#120e17;
+    border:1px solid #2a2032;
+    border-radius:20px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    border-color:#8b3dff;
+}
+
+.card img{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:18px;
+}
+
+.card h3{
+    font-size:19px;
+    margin-bottom:6px;
+}
+
+.description{
+    color:#999;
+    font-size:13px;
+    min-height:40px;
+}
+
+.price{
+    color:#c084fc;
+    font-size:19px;
+    font-weight:bold;
+    margin-top:12px;
+}
+
+.order{
+    display:block;
+    text-align:center;
+    background:#20152c;
+    color:#d8b4fe;
+    padding:10px;
+    margin-top:12px;
+    border-radius:12px;
+    text-decoration:none;
+}
+
+.info{
+    margin-top:45px;
+    padding:25px;
+    border:1px solid #2d2038;
+    border-radius:20px;
+    background:linear-gradient(145deg,#140d1d,#0b0910);
+}
+
+.info h2{
+    margin-bottom:12px;
+}
+
+.info p{
+    color:#aaa;
+    font-size:14px;
+    margin:7px 0;
+}
+
+footer{
+    margin-top:50px;
+    padding:35px 20px;
+    text-align:center;
+    border-top:1px solid #29202f;
+    color:#888;
+}
+
+footer strong{
+    color:#c084fc;
+}
+
+.float{
+    position:fixed;
+    right:18px;
+    bottom:20px;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:#25D366;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    text-decoration:none;
+    box-shadow:0 8px 30px rgba(37,211,102,.3);
+    z-index:20;
+}
+
+@media(max-width:600px){
+    .hero h1{
+        font-size:36px;
+    }
+
+    .menu-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        THE <span>BLACK SALT</span>
+    </div>
+    <div class="subtitle">
+        Restaurant & Bar • Sapphire 90 Mall
+    </div>
+</header>
+
+<section class="hero">
+    <div class="badge">DIGITAL MENU • SCAN • ORDER</div>
+
+    <h1>
+        Taste the <span>Extraordinary.</span>
+    </h1>
+
+    <p>
+        Welcome to The Black Salt — a modern dining experience
+        serving delicious North Indian cuisine in a stylish atmosphere.
+    </p>
+
+    <div class="buttons">
+        <a href="#menu" class="btn primary">View Menu</a>
+
+        <a href="tel:09319080715" class="btn secondary">
+            Call Restaurant
+        </a>
+    </div>
+</section>
+
+<div class="container" id="menu">
+
+<h2 class="section-title">
+    Explore <span>Our Menu</span>
+</h2>
+
+<div class="categories">
+    <button>All</button>
+    <button>Starters</button>
+    <button>Main Course</button>
+    <button>North Indian</button>
+    <button>Paneer</button>
+    <button>Chicken</button>
+    <button>Drinks</button>
+    <button>Desserts</button>
+</div>
+
+<br>
+
+<div class="menu-grid">
+
+<!-- ITEM 1 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=900&q=80">
+<div class="card-content">
+<h3>Paneer Tikka Masala</h3>
+<p class="description">
+Soft paneer cooked in a rich, creamy Indian masala.
+</p>
+<div class="price">₹395</div>
+<a class="order"
+href="https://wa.me/919319080715?text=Hello%20The%20Black%20Salt,%20I%20want%20to%20order%20Paneer%20Tikka%20Masala.">
+Order / Enquire
+</a>
+</div>
+</div>
+
+<!-- ITEM 2 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80">
+<div class="card-content">
+<h3>Veg Platter Sizzler</h3>
+<p class="description">
+A delicious selection of crispy and grilled vegetarian favourites.
+</p>
+<div class="price">₹495</div>
+<a class="order"
+href="https://wa.me/919319080715?text=Hello%20The%20Black%20Salt,%20I%20want%20to%20order%20Veg%20Platter%20Sizzler.">
+Order / Enquire
+</a>
+</div>
+</div>
+
+<!-- ITEM 3 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=900&q=80">
+<div class="card-content">
+<h3>Butter Chicken</h3>
+<p class="description">
+Tender chicken in a rich buttery tomato-based gravy.
+</p>
+<div class="price">₹525</div>
+<a class="order"
+href="https://wa.me/919319080715?text=Hello%20The%20Black%20Salt,%20I%20want%20to%20order%20Butter%20Chicken.">
+Order / Enquire
+</a>
+</div>
+</div>
+
+<!-- ITEM 4 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80">
+<div class="card-content">
+<h3>Garlic Naan</h3>
+<p class="description">
+Freshly baked naan topped with garlic and herbs.
+</p>
+<div class="price">₹145</div>
+<a class="order"
+href="https://wa.me/919319080715?text=Hello%20The%20Black%20Salt,%20I%20want%20to%20order%20Garlic%20Naan.">
+Order / Enquire
+</a>
+</div>
+</div>
+
+<!-- ITEM 5 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80">
+<div class="card-content">
+<h3>Rara Chicken</h3>
+<p class="description">
+A hearty North Indian chicken preparation with aromatic spices.
+</p>
+<div class="price">₹545</div>
+<a class="order"
+href="https://wa.me/919319080715?text=Hello%20The%20Black%20Salt,%20I%20want%20to%20order%20Rara%20Chicken.">
+Order / Enquire
+</a>
+</div>
+</div>
+
+<!-- ITEM 6 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=900&q=80">
+<div class="card-content">
+<h3>Hara Bhara Kebab</h3>
+<p class="description">
+Crispy vegetarian kebabs packed with herbs and spices.
+</p>
+<div class="price">₹
+325</div>
+
+<a class="order"
+href="https://wa.me/919319080715?text=Hello%20The%20Black%20Salt,%20I%20want%20to%20order%20Hara%20Bhara%20Kebab.">
+Order / Enquire
+</a>
+</div>
+</div>
+
+</div>
+
+<div class="info">
+
+<h2>📍 Visit The Black Salt</h2>
+
+<p>
+<strong>Location:</strong>
+Sapphire 90 Mall, S 215, Second Floor,
+Sector 90, Gurugram, Haryana 122505
+</p>
+
+<p>
+<strong>Dining:</strong>
+Dine-in • Kerbside Pickup • Delivery
+</p>
+
+<p>
+<strong>Timing:</strong>
+Open until approximately 11:00 PM
+</p>
+
+<p>
+<strong>Price Range:</strong>
+₹400 – ₹1,400 per person
+</p>
+
+<p>
+<strong>Google Rating:</strong>
+⭐ 4.7 / 5
+</p>
+
+<div class="buttons">
+
+<a href="tel:09319080715" class="btn primary">
+📞 Call Now
+</a>
+
+<a href="https://www.google.com/maps/search/?api=1&query=The%20Black%20Salt%20Restaurant%20Bar%20Sapphire%2090%20Mall%20Gurugram"
+class="btn secondary">
+📍 Open Maps
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>
+<strong>THE BLACK SALT</strong>
+</p>
+
+<p>
+Restaurant & Bar • Gurugram
+</p>
+
+<p>
+Digital Menu Experience
+</p>
+
+<br>
+
+<p>
+Website concept by Samar Hightech
+</p>
+
+</footer>
+
+<a class="float"
+href="https://wa.me/919319080715?text=Hello%20The%20Black%20Salt">
+💬
+</a>
+
+</body>
+</html>
